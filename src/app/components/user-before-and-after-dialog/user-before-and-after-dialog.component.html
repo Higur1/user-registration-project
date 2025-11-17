@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>Summary of changes</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="infos">
+        <div class="infos__row">
+            <div class="infos__item infos__header infos__header--border-top-left">Before</div>
+            <div class="infos__item infos__header infos__header--border-top-rigth">After</div>
+        </div>
+        <div class="infos__row">
+            <div class="infos__item"><strong>Name:</strong> {{ data.originalUser.name }}</div>
+            <div class="infos__item"><strong>Name:</strong> {{ data.updatedUser.name }}</div>
+        </div>
+        <div class="infos__row">
+            <div class="infos__item"><strong>User:</strong> {{ data.originalUser.username }}</div>
+            <div class="infos__item"><strong>User:</strong> {{ data.updatedUser.username }}</div>
+        </div>
+        <div class="infos__row">
+            <div class="infos__item"><strong>Email:</strong> {{ data.originalUser.email }}</div>
+            <div class="infos__item"><strong>Email:</strong> {{ data.updatedUser.email }}</div>
+        </div>
+        <div class="infos__row">
+            <div class="infos__item"><strong>Password:</strong> {{ data.originalUser.password }}</div>
+            <div class="infos__item"><strong>Password:</strong> {{ data.updatedUser.password }}</div>
+        </div>
+        <div class="infos__row">
+            <div class="infos__item"><strong>Birth Date:</strong> {{ data.originalUser.birthDate }}</div>
+            <div class="infos__item"><strong>Birth Date:</strong> {{ data.updatedUser.birthDate }}</div>
+        </div>
+        <div class="infos__row">
+            <div class="infos__item"><strong>State:</strong> {{ data.originalUser.state | stateDescription }}</div>
+            <div class="infos__item"><strong>State:</strong> {{ data.updatedUser.state | stateDescription }}</div>
+        </div>
+        <ng-container *ngFor="let music of data.originalUser.musics; let i = index">
+            <div class="infos__row">
+                <div class="infos__item"><strong>Music {{i + 1}} - Title:</strong> {{ music.title }}</div>
+                <div class="infos__item"><strong>Music {{i + 1}} - Title:</strong> {{ data.updatedUser.musics[i].title }}</div>
+            </div>
+            <div class="infos__row">
+                <div class="infos__item"><strong>Music {{i + 1}} - Band:</strong> {{ music.band }}</div>
+                <div class="infos__item"><strong>Music {{i + 1}} - Band:</strong> {{ data.updatedUser.musics[i].band }}
+                </div>
+            </div>
+            <div class="infos__row">
+                <div class="infos__item"><strong>Music {{i + 1}} - Genre:</strong> {{ music.genre | genreDescription}}</div>
+                <div class="infos__item"><strong>Music {{i + 1}} - Genre:</strong> {{ data.updatedUser.musics[i].genre | genreDescription }}
+                </div>
+            </div>
+            <div class="infos__row">
+                <div class="infos__item"><strong>Music {{i + 1}} - Favorite:</strong> {{ music.isFavorite | isFavoriteDescription }}</div>
+                <div class="infos__item"><strong>Music {{i + 1}} - Favorite:</strong> {{ data.updatedUser.musics[i].isFavorite | isFavoriteDescription }}
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">Confirm</button>
+</mat-dialog-actions>
